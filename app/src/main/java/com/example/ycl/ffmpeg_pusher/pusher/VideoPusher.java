@@ -70,6 +70,7 @@ public class VideoPusher extends Pusher implements SurfaceHolder.Callback, Camer
      * 开始预览
      */
     private void startPreview() {
+        Log.i(TAG, "startPreview: ");
         try {
             //SurfaceView初始化完成，开始相机预览
             mCamera = Camera.open(videoParams.getCameraId());
@@ -91,6 +92,7 @@ public class VideoPusher extends Pusher implements SurfaceHolder.Callback, Camer
      * 停止预览
      */
     private void stopPreview() {
+        Log.i(TAG, "stopPreview: ");
         if (mCamera != null) {
             mCamera.stopPreview();
             mCamera.release();
@@ -115,7 +117,7 @@ public class VideoPusher extends Pusher implements SurfaceHolder.Callback, Camer
 
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
-        Log.i(TAG, "onPreviewFrame: ");
+        Log.i(TAG, "onPreviewFrame: data: "+data);
         // 不断被调用 ,解决一个坑  当release的时候，一直在执行这个方法，所以可能为null
         if (mCamera != null) {
             mCamera.addCallbackBuffer(buffers);

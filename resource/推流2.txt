@@ -1,0 +1,53 @@
+
+1.音视频参数设置
+2.开始推流
+3.音频视频采集
+4.进行编码(生产者)
+5.RTMP推流（消费者）
+
+讲课流程：
+1.代码快速阅读
+2.时序图描述
+3.相关理论基础
+4.具体编码
+
+x264流程：
+x264_param_default_preset 设置
+x264_param_apply_profile 设置档次
+x264_picture_alloc（x264_picture_t输入图像）初始化
+x264_encoder_open 打开编码器
+x264_encoder_encode 编码
+x264_encoder_close( h ) 关闭编码器，释放资源
+
+h264标准（JM）
+
+NALU NAL单元
+I帧，帧内压缩(帧内监测)，Inner Frame
+P帧、B帧，帧间压缩，Inter Frame
+
+I帧，包含IDR图像
+
+NAL Header(8 bit)
+禁止位 重要性 类型
+00000111（类型7sps）
+00001000（类型8pps）
+
+NAL单元示例：
+起始码;NAL Header;payload
+0000000100000111xxxxx 0000000100001000xxxxx
+00000001;00000111;xxxxx
+
+
+	I P B
+dts	1 2 3
+pts	1 3 2
+
+
+
+
+
+
+
+
+
+

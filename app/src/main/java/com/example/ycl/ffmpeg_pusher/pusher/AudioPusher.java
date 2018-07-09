@@ -3,6 +3,7 @@ package com.example.ycl.ffmpeg_pusher.pusher;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.util.Log;
 
 import com.example.ycl.ffmpeg_pusher.params.AudioParam;
 import com.example.ycl.ffmpeg_pusher.utils.PushNative;
@@ -13,6 +14,7 @@ import com.example.ycl.ffmpeg_pusher.utils.PushNative;
  * @Desc:
  */
 public class AudioPusher extends Pusher {
+    private static final String TAG = "AudioPusher";
     private AudioParam audioParam;
     private PushNative pushNative;
     private int minBufferSize;
@@ -41,6 +43,7 @@ public class AudioPusher extends Pusher {
 
     @Override
     public void startPush() {
+        Log.i(TAG, "startPush: ");
         isPushing = true;
         //启动一个录音子线程
         new Thread(new AudioRecordRunable()).start();
@@ -48,12 +51,14 @@ public class AudioPusher extends Pusher {
 
     @Override
     public void stopPush() {
+        Log.i(TAG, "stopPush: ");
         isPushing = false;
         audioRecord.stop();
     }
 
     @Override
     public void release() {
+        Log.i(TAG, "release: ");
         if (audioRecord != null) {
             audioRecord.release();
             audioRecord = null;
@@ -73,6 +78,7 @@ public class AudioPusher extends Pusher {
                 int len = audioRecord.read(buffer, 0, buffer.length);
                 if (len > 0) {
                     //                传给Native代码，进行音频编码
+                    Log.i(TAG, "run: "+buffer+" len: "+len);
                     pushNative.fireAudio(buffer, len);
                 }
             }

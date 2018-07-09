@@ -1,6 +1,8 @@
 #include <jni.h>
 #include <string>
 
+
+
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_startPush(JNIEnv *env, jobject instance,
@@ -9,18 +11,23 @@ Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_startPush(JNIEnv *env, jobj
 
 
     env->ReleaseStringUTFChars(url_, url);
-}extern "C"
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_stopPush(JNIEnv *env, jobject instance) {
 
 
 }
+
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_release(JNIEnv *env, jobject instance) {
 
 
-}extern "C"
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_setVideoOptions(JNIEnv *env, jobject instance,
                                                                      jint width, jint height,
@@ -29,7 +36,9 @@ Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_setVideoOptions(JNIEnv *env
 
 
 
-}extern "C"
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_setAudioOptions(JNIEnv *env, jobject instance,
                                                                      jint sampleRateInHz,
@@ -38,7 +47,9 @@ Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_setAudioOptions(JNIEnv *env
 
 
 
-}extern "C"
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_fireVideo(JNIEnv *env, jobject instance,
                                                                jbyteArray data_) {
@@ -48,7 +59,9 @@ Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_fireVideo(JNIEnv *env, jobj
 
 
     env->ReleaseByteArrayElements(data_, data, 0);
-}extern "C"
+}
+
+extern "C"
 JNIEXPORT void JNICALL
 Java_com_example_ycl_ffmpeg_1pusher_utils_PushNative_fireAudio(JNIEnv *env, jobject instance,
                                                                jbyteArray data_, jint len) {
