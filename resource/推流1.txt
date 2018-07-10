@@ -1,0 +1,12 @@
+
+
+1.采集（视频、音频）
+视频采集：获取预览图像
+音频采集：AudioRecord
+
+2.编码（H264-X264、AAC-FAAC）
+3.推流（rtmp-dumprtmp）
+
+X264是遵循H264编码标准的函数库
+X264地址：
+http://www.videolan.org/developers/x264.html

@@ -10,6 +10,9 @@ public class VideoParam {
     private int height;
     private int cameraId;
 
+    private int bitrate = 480000;    // 码率480kbps
+    private int fps = 25;// 帧频默认25帧/s
+
 
     public VideoParam(int width, int height, int cameraId) {
         this.width = width;
@@ -39,5 +42,21 @@ public class VideoParam {
 
     public void setCameraId(int cameraId) {
         this.cameraId = cameraId;
+    }
+
+    public int getBitrate() {
+        return bitrate;
+    }
+
+    public void setBitrate(int bitrate) {
+        this.bitrate = bitrate;
+    }
+
+    public int getFps() {
+        return fps;
+    }
+
+    public void setFps(int fps) {
+        this.fps = fps;
     }
 }
